@@ -1,6 +1,6 @@
 import Foundation
 import Testing
-@testable import LiveBPM
+@testable import HitBPM
 
 @MainActor
 struct IntervalControllerTests {

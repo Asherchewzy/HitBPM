@@ -1,7 +1,7 @@
 import SwiftUI
 
 @main
-struct LiveBPMApp: App {
+struct HitBPMApp: App {
     @State private var bluetoothManager: BluetoothHeartRateManager
     @State private var intervalController: IntervalController
     @State private var soundPlayer: CompletionSoundPlayer

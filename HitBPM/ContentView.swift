@@ -26,7 +26,7 @@ struct ContentView: View {
                 .frame(maxWidth: .infinity)
                 .padding()
             }
-            .navigationTitle("LiveBPM")
+            .navigationTitle("HitBPM")
             .navigationBarTitleDisplayMode(.inline)
         }
         .onAppear {

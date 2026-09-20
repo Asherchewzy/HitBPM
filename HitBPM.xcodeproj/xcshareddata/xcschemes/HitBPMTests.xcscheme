@@ -20,8 +20,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "5D8E25D7305D54E000A1FB39"
-               BuildableName = "LiveBPMTests.xctest"
-               ReferencedContainer = "container:LiveBPM.xcodeproj">
+               BuildableName = "HitBPMTests.xctest"
+               ReferencedContainer = "container:HitBPM.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>

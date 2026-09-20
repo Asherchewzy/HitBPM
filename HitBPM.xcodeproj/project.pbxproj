@@ -7,26 +7,30 @@
 	objects = {
 
 /* Begin PBXContainerItemProxy section */
-        A10000000000000000000001 = {isa = PBXContainerItemProxy; containerPortal = 000000000000000000000000; proxyType = 1; remoteGlobalIDString = 000000000000000100000000; remoteInfo = LiveBPM; };
+		A10000000000000000000001 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 000000000000000000000000 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 000000000000000100000000;
+			remoteInfo = HitBPM;
+		};
 /* End PBXContainerItemProxy section */
-/* Begin PBXTargetDependency section */
-        A10000000000000000000002 = {isa = PBXTargetDependency; target = 000000000000000100000000; targetProxy = A10000000000000000000001; };
-/* End PBXTargetDependency section */
+
 /* Begin PBXFileReference section */
-		000000000000000000000120 /* LiveBPM.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LiveBPM.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		5D8E25D8305D54E000A1FB39 /* LiveBPMTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LiveBPMTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		5DBD5669305D5E0C007478A7 /* LiveBPM-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "LiveBPM-Info.plist"; sourceTree = "<group>"; };
+		000000000000000000000120 /* HitBPM.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HitBPM.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		5D8E25D8305D54E000A1FB39 /* HitBPMTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HitBPMTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		5DBD5669305D5E0C007478A7 /* HitBPM-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "HitBPM-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		000000000000000000000010 /* LiveBPM */ = {
+		000000000000000000000010 /* HitBPM */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			path = LiveBPM;
+			path = HitBPM;
 			sourceTree = "<group>";
 		};
-		5D8E25D9305D54E000A1FB39 /* LiveBPMTests */ = {
+		5D8E25D9305D54E000A1FB39 /* HitBPMTests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			path = LiveBPMTests;
+			path = HitBPMTests;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -48,9 +52,9 @@
 		000000000000000000000001 = {
 			isa = PBXGroup;
 			children = (
-				5DBD5669305D5E0C007478A7 /* LiveBPM-Info.plist */,
-				000000000000000000000010 /* LiveBPM */,
-				5D8E25D9305D54E000A1FB39 /* LiveBPMTests */,
+				5DBD5669305D5E0C007478A7 /* HitBPM-Info.plist */,
+				000000000000000000000010 /* HitBPM */,
+				5D8E25D9305D54E000A1FB39 /* HitBPMTests */,
 				000000000000000000000020 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -58,8 +62,8 @@
 		000000000000000000000020 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				000000000000000000000120 /* LiveBPM.app */,
-				5D8E25D8305D54E000A1FB39 /* LiveBPMTests.xctest */,
+				000000000000000000000120 /* HitBPM.app */,
+				5D8E25D8305D54E000A1FB39 /* HitBPMTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -67,9 +71,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		000000000000000100000000 /* LiveBPM */ = {
+		000000000000000100000000 /* HitBPM */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 000000000000000110000000 /* Build configuration list for PBXNativeTarget "LiveBPM" */;
+			buildConfigurationList = 000000000000000110000000 /* Build configuration list for PBXNativeTarget "HitBPM" */;
 			buildPhases = (
 				000000000000000120000000 /* Sources */,
 				000000000000000130000000 /* Frameworks */,
@@ -78,16 +82,16 @@
 			buildRules = (
 			);
 			fileSystemSynchronizedGroups = (
-				000000000000000000000010 /* LiveBPM */,
+				000000000000000000000010 /* HitBPM */,
 			);
-			name = LiveBPM;
-			productName = MyApp;
-			productReference = 000000000000000000000120 /* LiveBPM.app */;
+			name = HitBPM;
+			productName = HitBPM;
+			productReference = 000000000000000000000120 /* HitBPM.app */;
 			productType = "com.apple.product-type.application";
 		};
-		5D8E25D7305D54E000A1FB39 /* MyAppTests */ = {
+		5D8E25D7305D54E000A1FB39 /* HitBPMTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 5D8E25DC305D54E000A1FB39 /* Build configuration list for PBXNativeTarget "MyAppTests" */;
+			buildConfigurationList = 5D8E25DC305D54E000A1FB39 /* Build configuration list for PBXNativeTarget "HitBPMTests" */;
 			buildPhases = (
 				5D8E25D4305D54E000A1FB39 /* Sources */,
 				5D8E25D5305D54E000A1FB39 /* Frameworks */,
@@ -95,13 +99,15 @@
 			);
 			buildRules = (
 			);
-			fileSystemSynchronizedGroups = (
-				5D8E25D9305D54E000A1FB39 /* LiveBPMTests */,
+			dependencies = (
+				A10000000000000000000002 /* PBXTargetDependency */,
 			);
-			dependencies = (A10000000000000000000002);
-			name = MyAppTests;
-			productName = MyAppTests;
-			productReference = 5D8E25D8305D54E000A1FB39 /* LiveBPMTests.xctest */;
+			fileSystemSynchronizedGroups = (
+				5D8E25D9305D54E000A1FB39 /* HitBPMTests */,
+			);
+			name = HitBPMTests;
+			productName = HitBPMTests;
+			productReference = 5D8E25D8305D54E000A1FB39 /* HitBPMTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -122,7 +128,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 000000000000000010000000 /* Build configuration list for PBXProject "LiveBPM" */;
+			buildConfigurationList = 000000000000000010000000 /* Build configuration list for PBXProject "HitBPM" */;
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -136,8 +142,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				000000000000000100000000 /* LiveBPM */,
-				5D8E25D7305D54E000A1FB39 /* MyAppTests */,
+				000000000000000100000000 /* HitBPM */,
+				5D8E25D7305D54E000A1FB39 /* HitBPMTests */,
 			);
 		};
 /* End PBXProject section */
@@ -168,8 +174,16 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		A10000000000000000000002 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 000000000000000100000000 /* HitBPM */;
+			targetProxy = A10000000000000000000001 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
-		000000000000000011000000 /* Debug configuration for PBXProject "LiveBPM" */ = {
+		000000000000000011000000 /* Debug configuration for PBXProject "HitBPM" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -239,7 +253,7 @@
 			};
 			name = Debug;
 		};
-		000000000000000012000000 /* Release configuration for PBXProject "LiveBPM" */ = {
+		000000000000000012000000 /* Release configuration for PBXProject "HitBPM" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -301,7 +315,7 @@
 			};
 			name = Release;
 		};
-		000000000000000111000000 /* Debug configuration for PBXNativeTarget "LiveBPM" */ = {
+		000000000000000111000000 /* Debug configuration for PBXNativeTarget "HitBPM" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -313,8 +327,8 @@
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SELECTED_FILES = readonly;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "LiveBPM-Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = LiveBPM;
+				INFOPLIST_FILE = "HitBPM-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = HitBPM;
 				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "This app uses Bluetooth to connect to your heart-rate monitor and display live heart-rate readings.";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
@@ -331,7 +345,7 @@
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.asher.livebpm;
-				PRODUCT_NAME = LiveBPM;
+				PRODUCT_NAME = HitBPM;
 				REGISTER_APP_GROUPS = YES;
 				SDKROOT = auto;
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
@@ -345,7 +359,7 @@
 			};
 			name = Debug;
 		};
-		000000000000000112000000 /* Release configuration for PBXNativeTarget "LiveBPM" */ = {
+		000000000000000112000000 /* Release configuration for PBXNativeTarget "HitBPM" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -357,8 +371,8 @@
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SELECTED_FILES = readonly;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "LiveBPM-Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = LiveBPM;
+				INFOPLIST_FILE = "HitBPM-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = HitBPM;
 				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "This app uses Bluetooth to connect to your heart-rate monitor and display live heart-rate readings.";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
@@ -375,7 +389,7 @@
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.asher.livebpm;
-				PRODUCT_NAME = LiveBPM;
+				PRODUCT_NAME = HitBPM;
 				REGISTER_APP_GROUPS = YES;
 				SDKROOT = auto;
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
@@ -389,19 +403,18 @@
 			};
 			name = Release;
 		};
-		5D8E25DD305D54E000A1FB39 /* Debug configuration for PBXNativeTarget "MyAppTests" */ = {
+		5D8E25DD305D54E000A1FB39 /* Debug configuration for PBXNativeTarget "HitBPMTests" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
 				MACOSX_DEPLOYMENT_TARGET = 26.6;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.yourcompany.MyAppTests;
-				PRODUCT_NAME = LiveBPMTests;
-                TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LiveBPM.app/LiveBPM";
-                BUNDLE_LOADER = "$(TEST_HOST)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.yourcompany.HitBPMTests;
+				PRODUCT_NAME = HitBPMTests;
 				SDKROOT = auto;
 				STRING_CATALOG_GENERATE_SYMBOLS = NO;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -410,23 +423,23 @@
 				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HitBPM.app/HitBPM";
 				XROS_DEPLOYMENT_TARGET = 27.0;
 			};
 			name = Debug;
 		};
-		5D8E25DE305D54E000A1FB39 /* Release configuration for PBXNativeTarget "MyAppTests" */ = {
+		5D8E25DE305D54E000A1FB39 /* Release configuration for PBXNativeTarget "HitBPMTests" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
 				MACOSX_DEPLOYMENT_TARGET = 26.6;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.yourcompany.MyAppTests;
-				PRODUCT_NAME = LiveBPMTests;
-                TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LiveBPM.app/LiveBPM";
-                BUNDLE_LOADER = "$(TEST_HOST)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.yourcompany.HitBPMTests;
+				PRODUCT_NAME = HitBPMTests;
 				SDKROOT = auto;
 				STRING_CATALOG_GENERATE_SYMBOLS = NO;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -435,6 +448,7 @@
 				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HitBPM.app/HitBPM";
 				XROS_DEPLOYMENT_TARGET = 27.0;
 			};
 			name = Release;
@@ -442,27 +456,27 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		000000000000000010000000 /* Build configuration list for PBXProject "LiveBPM" */ = {
+		000000000000000010000000 /* Build configuration list for PBXProject "HitBPM" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				000000000000000011000000 /* Debug configuration for PBXProject "LiveBPM" */,
-				000000000000000012000000 /* Release configuration for PBXProject "LiveBPM" */,
+				000000000000000011000000 /* Debug configuration for PBXProject "HitBPM" */,
+				000000000000000012000000 /* Release configuration for PBXProject "HitBPM" */,
 			);
 			defaultConfigurationName = Release;
 		};
-		000000000000000110000000 /* Build configuration list for PBXNativeTarget "LiveBPM" */ = {
+		000000000000000110000000 /* Build configuration list for PBXNativeTarget "HitBPM" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				000000000000000111000000 /* Debug configuration for PBXNativeTarget "LiveBPM" */,
-				000000000000000112000000 /* Release configuration for PBXNativeTarget "LiveBPM" */,
+				000000000000000111000000 /* Debug configuration for PBXNativeTarget "HitBPM" */,
+				000000000000000112000000 /* Release configuration for PBXNativeTarget "HitBPM" */,
 			);
 			defaultConfigurationName = Release;
 		};
-		5D8E25DC305D54E000A1FB39 /* Build configuration list for PBXNativeTarget "MyAppTests" */ = {
+		5D8E25DC305D54E000A1FB39 /* Build configuration list for PBXNativeTarget "HitBPMTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				5D8E25DD305D54E000A1FB39 /* Debug configuration for PBXNativeTarget "MyAppTests" */,
-				5D8E25DE305D54E000A1FB39 /* Release configuration for PBXNativeTarget "MyAppTests" */,
+				5D8E25DD305D54E000A1FB39 /* Debug configuration for PBXNativeTarget "HitBPMTests" */,
+				5D8E25DE305D54E000A1FB39 /* Release configuration for PBXNativeTarget "HitBPMTests" */,
 			);
 			defaultConfigurationName = Release;
 		};

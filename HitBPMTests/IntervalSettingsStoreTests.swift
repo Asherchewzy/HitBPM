@@ -1,11 +1,11 @@
 import Foundation
 import Testing
-@testable import LiveBPM
+@testable import HitBPM
 
 @MainActor
 struct IntervalSettingsStoreTests {
     @Test func settingsRoundTripKeepsZeroDelayAndClearsTarget() {
-        let name = "LiveBPMTests.\(UUID().uuidString)"
+        let name = "HitBPMTests.\(UUID().uuidString)"
         let defaults = UserDefaults(suiteName: name)!
         defer { defaults.removePersistentDomain(forName: name) }
         let store = IntervalSettingsStore(defaults: defaults)
@@ -18,7 +18,7 @@ struct IntervalSettingsStoreTests {
     }
 
     @Test func corruptValuesFallBackIndependently() {
-        let name = "LiveBPMTests.\(UUID().uuidString)"
+        let name = "HitBPMTests.\(UUID().uuidString)"
         let defaults = UserDefaults(suiteName: name)!
         defer { defaults.removePersistentDomain(forName: name) }
         let store = IntervalSettingsStore(defaults: defaults)

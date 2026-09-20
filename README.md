@@ -1,4 +1,6 @@
-# LiveBPM
+# HitBPM
+
+**Hit your target. Start your interval.**
 
 A simple iPhone app for heart-rate interval training with a Fitbit Charge 6.
 
