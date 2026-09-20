@@ -47,3 +47,5 @@ docs/
 *.p8
 *.mobileprovision
 *.provisionprofile
+
+HitBPM.xcodeproj/project.pbxproj
