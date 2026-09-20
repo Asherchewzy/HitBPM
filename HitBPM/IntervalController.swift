@@ -5,7 +5,7 @@ import Observation
 @Observable
 final class IntervalController {
     enum State: Equatable {
-        case waiting, countdown, complete, resetDelay
+        case waiting, countdown, complete, resetDelay, stopped
     }
 
     nonisolated struct Settings: Equatable {
@@ -40,13 +40,13 @@ final class IntervalController {
         self.onComplete = onComplete
     }
 
-    var canEditSettings: Bool { state == .waiting || state == .complete }
+    var canEditSettings: Bool { state == .waiting || state == .complete || state == .stopped }
 
     @discardableResult
     func updateSettings(_ settings: Settings) -> Bool {
         guard canEditSettings, settings.isValid else { return false }
         self.settings = settings
-        state = .waiting
+        if state != .stopped { state = .waiting }
         remainingSeconds = settings.intervalSeconds
         delayRemainingSeconds = 0
         deadline = nil
@@ -79,9 +79,15 @@ final class IntervalController {
                 self.deadline = nil
                 state = .waiting
             }
-        case .waiting, .complete:
+        case .waiting, .complete, .stopped:
             break
         }
+    }
+
+    func stop() {
+        deadline = nil
+        state = .stopped
+        delayRemainingSeconds = 0
     }
 
     func reset() {

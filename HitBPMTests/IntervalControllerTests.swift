@@ -4,6 +4,45 @@ import Testing
 
 @MainActor
 struct IntervalControllerTests {
+    @Test(arguments: [0, 1, 2]) func stopCancelsWaitingCountdownAndDelay(start: Int) {
+        var time: TimeInterval = 0
+        var completions = 0
+        let settings = IntervalController.Settings(targetBPM: 150, intervalSeconds: 4, resetDelaySeconds: 3)
+        let model = IntervalController(settings: settings, now: { time }, onComplete: { completions += 1 })
+        if start == 1 { model.receiveHeartRate(150) }
+        if start == 2 { model.reset() }
+
+        model.stop()
+        model.stop()
+        time = 100
+        model.refresh()
+        model.receiveHeartRate(160)
+        #expect(model.state == .stopped)
+        #expect(model.delayRemainingSeconds == 0)
+        #expect(model.settings == settings)
+        #expect(model.canEditSettings)
+        #expect(completions == 0)
+
+        model.reset()
+        #expect(model.state == .resetDelay)
+        time = 103
+        model.receiveHeartRate(150)
+        #expect(model.state == .countdown)
+        #expect(model.remainingSeconds == 4)
+    }
+
+    @Test func editingSettingsWhileStoppedDoesNotRearm() {
+        let model = IntervalController(settings: .init(targetBPM: 150))
+        model.stop()
+        #expect(model.updateSettings(.init(targetBPM: 140, intervalSeconds: 60, resetDelaySeconds: 0)))
+        model.receiveHeartRate(160)
+        #expect(model.state == .stopped)
+        #expect(model.remainingSeconds == 60)
+        model.reset()
+        model.receiveHeartRate(160)
+        #expect(model.state == .countdown)
+    }
+
     @Test func thresholdAndUninterruptedDeadline() {
         var time: TimeInterval = 0
         var completions = 0

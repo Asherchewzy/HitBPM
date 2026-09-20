@@ -13,21 +13,6 @@ struct WorkoutTimerView: View {
 
     var body: some View {
         VStack(spacing: 20) {
-            Button {
-                editor = .target
-            } label: {
-                Text(controller.settings.targetBPM.map { "Target \($0) BPM" } ?? "Set target BPM")
-                    .font(.title3.bold())
-                    .frame(minHeight: 44)
-            }
-            .disabled(!controller.canEditSettings)
-
-            ViewThatFits(in: .horizontal) {
-                HStack(spacing: 16) { durationButtons }
-                VStack { durationButtons }
-            }
-            .disabled(!controller.canEditSettings)
-
             VStack(spacing: 4) {
                 Text(status)
                     .font(.headline)
@@ -47,6 +32,29 @@ struct WorkoutTimerView: View {
             .frame(maxWidth: .infinity)
             .padding()
             .background(.quaternary, in: .rect(cornerRadius: 16))
+
+            Button("Stop", systemImage: "stop.fill", role: .destructive, action: controller.stop)
+                .font(.title3.bold())
+                .frame(maxWidth: .infinity)
+                .buttonStyle(.bordered)
+                .controlSize(.extraLarge)
+                .disabled(controller.state == .stopped || controller.state == .complete)
+                .accessibilityHint("Stops the interval while keeping live heart rate visible")
+
+            Button {
+                editor = .target
+            } label: {
+                Text(controller.settings.targetBPM.map { "Target \($0) BPM" } ?? "Set target BPM")
+                    .font(.title3.bold())
+                    .frame(minHeight: 44)
+            }
+            .disabled(!controller.canEditSettings)
+
+            ViewThatFits(in: .horizontal) {
+                HStack(spacing: 16) { durationButtons }
+                VStack { durationButtons }
+            }
+            .disabled(!controller.canEditSettings)
 
             Button("Reset Interval", action: controller.reset)
                 .font(.title3.bold())
@@ -103,12 +111,14 @@ struct WorkoutTimerView: View {
     }
 
     private var status: String {
+        if controller.state == .stopped { return "Interval stopped" }
         guard controller.settings.targetBPM != nil else { return "Set target BPM to begin" }
         switch controller.state {
         case .waiting: return "Waiting for HR"
         case .countdown: return "Interval in progress"
         case .complete: return "Interval complete"
         case .resetDelay: return "Ready in"
+        case .stopped: return "Interval stopped"
         }
     }
 

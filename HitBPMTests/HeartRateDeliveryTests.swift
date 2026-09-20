@@ -4,6 +4,18 @@ import Testing
 
 @MainActor
 struct HeartRateDeliveryTests {
+    @Test func stoppedIntervalStillReceivesLiveHeartRate() {
+        let manager = BluetoothHeartRateManager()
+        let model = IntervalController(settings: .init(targetBPM: 150))
+        manager.onHeartRate = { model.receiveHeartRate($0) }
+        manager.acceptMeasurement(Data([0, 150]))
+        #expect(model.state == .countdown)
+        model.stop()
+        manager.acceptMeasurement(Data([0, 165]))
+        #expect(manager.currentHeartRate() == 165)
+        #expect(model.state == .stopped)
+    }
+
     @Test func longInactivityExpiresIntervalDelayAndCachedHeartRate() {
         var time: TimeInterval = 0
         var completions = 0
