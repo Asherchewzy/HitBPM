@@ -2,6 +2,13 @@ import SwiftUI
 
 struct ContentView: View {
     @Bindable var bluetoothManager: BluetoothHeartRateManager
+    let intervalController: IntervalController
+    let soundPlayer: CompletionSoundPlayer
+    let onSettingsChanged: (IntervalController.Settings) -> Void
+    @Environment(\.scenePhase) private var scenePhase
+    @State private var liveHeartRate: Int?
+    @State private var isVisible = false
+    @ScaledMetric(relativeTo: .largeTitle) private var heartRateSize = 88
 
     var body: some View {
         NavigationStack {
@@ -9,6 +16,10 @@ struct ContentView: View {
                 VStack(spacing: 28) {
                     statusSection
                     heartRateSection
+                    WorkoutTimerView(controller: intervalController, onSettingsChanged: onSettingsChanged)
+                    if let message = soundPlayer.errorMessage {
+                        Text(message).font(.callout).foregroundStyle(.secondary)
+                    }
                     deviceSection
                     controlsSection
                 }
@@ -16,6 +27,31 @@ struct ContentView: View {
                 .padding()
             }
             .navigationTitle("LiveBPM")
+            .navigationBarTitleDisplayMode(.inline)
+        }
+        .onAppear {
+            isVisible = true
+            updateIdleTimer()
+        }
+        .onDisappear {
+            isVisible = false
+            updateIdleTimer()
+        }
+        .onChange(of: scenePhase) { updateIdleTimer() }
+        .task(id: scenePhase) { await refreshWhileActive() }
+    }
+
+    private func updateIdleTimer() {
+        UIApplication.shared.isIdleTimerDisabled = isVisible && scenePhase == .active
+    }
+
+    private func refreshWhileActive() async {
+        guard scenePhase == .active else { return }
+        while !Task.isCancelled {
+            intervalController.refresh()
+            liveHeartRate = bluetoothManager.currentHeartRate()
+            do { try await Task.sleep(for: .milliseconds(200)) }
+            catch { return }
         }
     }
 
@@ -27,6 +63,10 @@ struct ContentView: View {
             )
             .font(.headline)
             .foregroundStyle(statusColor)
+
+            if liveHeartRate == nil && bluetoothManager.lastHeartRateReceivedAt != nil {
+                Text("Signal lost").foregroundStyle(.secondary)
+            }
 
             if case let .connectionFailed(message) = bluetoothManager.connectionState {
                 Text(message)
@@ -44,8 +84,8 @@ struct ContentView: View {
 
     private var heartRateSection: some View {
         VStack(spacing: 4) {
-            Text(bluetoothManager.heartRate.map(String.init) ?? "—")
-                .font(.system(size: 88, weight: .bold, design: .rounded))
+            Text(liveHeartRate.map(String.init) ?? "—")
+                .font(.system(size: heartRateSize, weight: .bold, design: .rounded))
                 .minimumScaleFactor(0.6)
                 .contentTransition(.numericText())
                 .accessibilityLabel("Heart rate")
@@ -56,7 +96,7 @@ struct ContentView: View {
                 .foregroundStyle(.secondary)
         }
         .frame(maxWidth: .infinity)
-        .padding(.vertical, 24)
+        .padding(.vertical, 8)
     }
 
     @ViewBuilder
@@ -168,7 +208,7 @@ struct ContentView: View {
     }
 
     private var heartRateAccessibilityValue: String {
-        guard let heartRate = bluetoothManager.heartRate else {
+        guard let heartRate = liveHeartRate else {
             return "No reading"
         }
         return "\(heartRate) beats per minute"
@@ -176,5 +216,10 @@ struct ContentView: View {
 }
 
 #Preview {
-    ContentView(bluetoothManager: BluetoothHeartRateManager())
+    ContentView(
+        bluetoothManager: BluetoothHeartRateManager(),
+        intervalController: IntervalController(settings: .init(targetBPM: 150)),
+        soundPlayer: CompletionSoundPlayer(),
+        onSettingsChanged: { _ in }
+    )
 }

@@ -11,6 +11,8 @@ DerivedData/
 *.ipa
 *.dSYM
 *.dSYM.zip
+*.xcarchive
+*.xcresult
 
 # Swift Package Manager
 .build/
@@ -27,3 +29,21 @@ fastlane/report.xml
 fastlane/Preview.html
 fastlane/screenshots/**/*.png
 fastlane/test_output/
+
+# Local agent tools and scratch files
+/.agents/skills/
+/skills-lock.json
+/.superpowers/
+/.worktrees/
+/draftprompt.txt
+docs/
+
+# Local environment and signing credentials
+.env
+.env.*
+!.env.example
+!.env.sample
+*.p12
+*.p8
+*.mobileprovision
+*.provisionprofile

@@ -6,10 +6,16 @@
 	objectVersion = 90;
 	objects = {
 
+/* Begin PBXContainerItemProxy section */
+        A10000000000000000000001 = {isa = PBXContainerItemProxy; containerPortal = 000000000000000000000000; proxyType = 1; remoteGlobalIDString = 000000000000000100000000; remoteInfo = LiveBPM; };
+/* End PBXContainerItemProxy section */
+/* Begin PBXTargetDependency section */
+        A10000000000000000000002 = {isa = PBXTargetDependency; target = 000000000000000100000000; targetProxy = A10000000000000000000001; };
+/* End PBXTargetDependency section */
 /* Begin PBXFileReference section */
 		000000000000000000000120 /* LiveBPM.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LiveBPM.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5D8E25D8305D54E000A1FB39 /* LiveBPMTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LiveBPMTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		5DBD5669305D5E0C007478A7 /* MyApp-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "MyApp-Info.plist"; sourceTree = "<group>"; };
+		5DBD5669305D5E0C007478A7 /* LiveBPM-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "LiveBPM-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -42,7 +48,7 @@
 		000000000000000000000001 = {
 			isa = PBXGroup;
 			children = (
-				5DBD5669305D5E0C007478A7 /* MyApp-Info.plist */,
+				5DBD5669305D5E0C007478A7 /* LiveBPM-Info.plist */,
 				000000000000000000000010 /* LiveBPM */,
 				5D8E25D9305D54E000A1FB39 /* LiveBPMTests */,
 				000000000000000000000020 /* Products */,
@@ -61,9 +67,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		000000000000000100000000 /* MyApp */ = {
+		000000000000000100000000 /* LiveBPM */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 000000000000000110000000 /* Build configuration list for PBXNativeTarget "MyApp" */;
+			buildConfigurationList = 000000000000000110000000 /* Build configuration list for PBXNativeTarget "LiveBPM" */;
 			buildPhases = (
 				000000000000000120000000 /* Sources */,
 				000000000000000130000000 /* Frameworks */,
@@ -74,7 +80,7 @@
 			fileSystemSynchronizedGroups = (
 				000000000000000000000010 /* LiveBPM */,
 			);
-			name = MyApp;
+			name = LiveBPM;
 			productName = MyApp;
 			productReference = 000000000000000000000120 /* LiveBPM.app */;
 			productType = "com.apple.product-type.application";
@@ -92,6 +98,7 @@
 			fileSystemSynchronizedGroups = (
 				5D8E25D9305D54E000A1FB39 /* LiveBPMTests */,
 			);
+			dependencies = (A10000000000000000000002);
 			name = MyAppTests;
 			productName = MyAppTests;
 			productReference = 5D8E25D8305D54E000A1FB39 /* LiveBPMTests.xctest */;
@@ -115,7 +122,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 000000000000000010000000 /* Build configuration list for PBXProject "Untitled Project" */;
+			buildConfigurationList = 000000000000000010000000 /* Build configuration list for PBXProject "LiveBPM" */;
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -129,7 +136,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				000000000000000100000000 /* MyApp */,
+				000000000000000100000000 /* LiveBPM */,
 				5D8E25D7305D54E000A1FB39 /* MyAppTests */,
 			);
 		};
@@ -162,7 +169,7 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		000000000000000011000000 /* Debug configuration for PBXProject "Untitled Project" */ = {
+		000000000000000011000000 /* Debug configuration for PBXProject "LiveBPM" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -232,7 +239,7 @@
 			};
 			name = Debug;
 		};
-		000000000000000012000000 /* Release configuration for PBXProject "Untitled Project" */ = {
+		000000000000000012000000 /* Release configuration for PBXProject "LiveBPM" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -294,9 +301,10 @@
 			};
 			name = Release;
 		};
-		000000000000000111000000 /* Debug configuration for PBXNativeTarget "MyApp" */ = {
+		000000000000000111000000 /* Debug configuration for PBXNativeTarget "LiveBPM" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -305,7 +313,7 @@
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SELECTED_FILES = readonly;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "MyApp-Info.plist";
+				INFOPLIST_FILE = "LiveBPM-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = LiveBPM;
 				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "This app uses Bluetooth to connect to your heart-rate monitor and display live heart-rate readings.";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
@@ -337,9 +345,10 @@
 			};
 			name = Debug;
 		};
-		000000000000000112000000 /* Release configuration for PBXNativeTarget "MyApp" */ = {
+		000000000000000112000000 /* Release configuration for PBXNativeTarget "LiveBPM" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -348,7 +357,7 @@
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SELECTED_FILES = readonly;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "MyApp-Info.plist";
+				INFOPLIST_FILE = "LiveBPM-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = LiveBPM;
 				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "This app uses Bluetooth to connect to your heart-rate monitor and display live heart-rate readings.";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
@@ -391,6 +400,8 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.yourcompany.MyAppTests;
 				PRODUCT_NAME = LiveBPMTests;
+                TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LiveBPM.app/LiveBPM";
+                BUNDLE_LOADER = "$(TEST_HOST)";
 				SDKROOT = auto;
 				STRING_CATALOG_GENERATE_SYMBOLS = NO;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -414,6 +425,8 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.yourcompany.MyAppTests;
 				PRODUCT_NAME = LiveBPMTests;
+                TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LiveBPM.app/LiveBPM";
+                BUNDLE_LOADER = "$(TEST_HOST)";
 				SDKROOT = auto;
 				STRING_CATALOG_GENERATE_SYMBOLS = NO;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -429,19 +442,19 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		000000000000000010000000 /* Build configuration list for PBXProject "Untitled Project" */ = {
+		000000000000000010000000 /* Build configuration list for PBXProject "LiveBPM" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				000000000000000011000000 /* Debug configuration for PBXProject "Untitled Project" */,
-				000000000000000012000000 /* Release configuration for PBXProject "Untitled Project" */,
+				000000000000000011000000 /* Debug configuration for PBXProject "LiveBPM" */,
+				000000000000000012000000 /* Release configuration for PBXProject "LiveBPM" */,
 			);
 			defaultConfigurationName = Release;
 		};
-		000000000000000110000000 /* Build configuration list for PBXNativeTarget "MyApp" */ = {
+		000000000000000110000000 /* Build configuration list for PBXNativeTarget "LiveBPM" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				000000000000000111000000 /* Debug configuration for PBXNativeTarget "MyApp" */,
-				000000000000000112000000 /* Release configuration for PBXNativeTarget "MyApp" */,
+				000000000000000111000000 /* Debug configuration for PBXNativeTarget "LiveBPM" */,
+				000000000000000112000000 /* Release configuration for PBXNativeTarget "LiveBPM" */,
 			);
 			defaultConfigurationName = Release;
 		};

@@ -21,7 +21,7 @@
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "5D8E25D7305D54E000A1FB39"
                BuildableName = "LiveBPMTests.xctest"
-               ReferencedContainer = "container:Untitled Project.xcodeproj">
+               ReferencedContainer = "container:LiveBPM.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>

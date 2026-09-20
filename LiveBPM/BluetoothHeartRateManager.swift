@@ -49,6 +49,9 @@ final class BluetoothHeartRateManager: NSObject {
     private(set) var connectionState: ConnectionState = .idle
     private(set) var discoveredDevices: [DiscoveredDevice] = []
     private(set) var heartRate: Int?
+    private(set) var lastHeartRateReceivedAt: TimeInterval?
+    @ObservationIgnored var onHeartRate: ((Int) -> Void)?
+    @ObservationIgnored private let now: () -> TimeInterval
     private(set) var selectedDeviceID: UUID?
     private(set) var isBluetoothAvailable = false
 
@@ -58,9 +61,23 @@ final class BluetoothHeartRateManager: NSObject {
     private var reconnectAttempt = 0
     private let maximumReconnectDelay: TimeInterval = 8
 
-    override init() {
+    init(now: @escaping () -> TimeInterval = { WorkoutClock.now() }) {
+        self.now = now
         super.init()
         centralManager = CBCentralManager(delegate: self, queue: .main)
+    }
+
+    func acceptMeasurement(_ data: Data) {
+        guard let bpm = try? HeartRateMeasurementParser.parse(data), bpm > 0 else { return }
+        heartRate = bpm
+        lastHeartRateReceivedAt = now()
+        onHeartRate?(bpm)
+    }
+
+    func currentHeartRate() -> Int? {
+        guard let lastHeartRateReceivedAt,
+              now() - lastHeartRateReceivedAt < 10 else { return nil }
+        return heartRate
     }
 
     var selectedDeviceName: String? {
@@ -80,6 +97,7 @@ final class BluetoothHeartRateManager: NSObject {
         selectedDeviceID = nil
         selectedPeripheral = nil
         heartRate = nil
+        lastHeartRateReceivedAt = nil
         connectionState = .scanning
         centralManager.scanForPeripherals(
             withServices: [Self.heartRateServiceUUID],
@@ -116,6 +134,7 @@ final class BluetoothHeartRateManager: NSObject {
         userRequestedDisconnect = true
         centralManager.stopScan()
         heartRate = nil
+        lastHeartRateReceivedAt = nil
 
         guard let selectedPeripheral else {
             connectionState = .disconnected
@@ -179,10 +198,12 @@ extension BluetoothHeartRateManager: CBCentralManagerDelegate {
         case .unknown, .resetting, .unsupported, .unauthorized, .poweredOff:
             central.stopScan()
             heartRate = nil
+            lastHeartRateReceivedAt = nil
             connectionState = .bluetoothUnavailable
         @unknown default:
             central.stopScan()
             heartRate = nil
+            lastHeartRateReceivedAt = nil
             connectionState = .bluetoothUnavailable
         }
     }
@@ -222,6 +243,7 @@ extension BluetoothHeartRateManager: CBCentralManagerDelegate {
         error: (any Error)?
     ) {
         heartRate = nil
+        lastHeartRateReceivedAt = nil
         connectionState = .connectionFailed(error?.localizedDescription ?? "Unable to connect.")
     }
 
@@ -231,6 +253,7 @@ extension BluetoothHeartRateManager: CBCentralManagerDelegate {
         error: (any Error)?
     ) {
         heartRate = nil
+        lastHeartRateReceivedAt = nil
         connectionState = .disconnected
         scheduleReconnect()
     }
@@ -298,12 +321,11 @@ extension BluetoothHeartRateManager: CBPeripheralDelegate {
         guard
             error == nil,
             characteristic.uuid == Self.heartRateMeasurementUUID,
-            let value = characteristic.value,
-            let parsedHeartRate = try? HeartRateMeasurementParser.parse(value)
+            let value = characteristic.value
         else {
             return
         }
 
-        heartRate = parsedHeartRate
+        acceptMeasurement(value)
     }
 }
